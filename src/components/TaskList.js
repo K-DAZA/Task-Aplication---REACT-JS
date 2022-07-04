@@ -1,15 +1,17 @@
-import React from 'react'
-import Checkboxes from './Checkboxes';
+import React, { useState } from 'react' 
 
 export default function TaskList(props) {
+
+  const [estilo, setEstilo] = useState("");
+
+  const handleComplete = () => {
+    setEstilo("line-through");
+  }
+
   return (
     <div>
-      <div className="border border-2">
-        <h1 className="text-4xl font-bold text-center p-5">Task</h1>
-      </div>
-
-      <div>
-        <Checkboxes idTask={props.idTask}/>
+      <div className={estilo}>
+        📌 {props.title} <span className="float-right cursor-pointer" onClick={ handleComplete }>✔️</span>
       </div>
     </div>
   );
